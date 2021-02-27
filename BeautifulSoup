@@ -1,0 +1,35 @@
+import requests
+from bs4 import BeautifulSoup as soup
+
+source = requests.get('link-goes-here').text
+
+page_souper = soup(source, "lxml")
+
+
+
+# print(page_souper.prettify())
+
+
+item = page_souper.find("span",{'class':"gb-font-size-medium inlineBlock unitLineHeight dealPriceText"})
+# author = item.find("a",{'class':"entry-author-link"})
+print(item)
+#
+# title = article.a.text
+# print(title)
+# titles = page_souper.findAll("a", {"class": "entry-title-link"})
+#
+#
+#
+#
+# summarys = article.findAll("div", {"class": "entry-content"})
+# print(summarys[0].text)
+#
+#
+# for (title,summary) in zip(titles,summarys):
+#     print("Title:: " + title.text)
+#     print("Synopsis:: " + summary.text)
+#
+#
+#
+# link = article.find("iframe", class_='youtube-player')['src']
+# print(link)
