@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as soup
 
-source = requests.get('link-goes-here').text
+source = requests.get('https://www.etsy.com/').text
 
 page_souper = soup(source, "lxml")
 
@@ -10,10 +10,13 @@ page_souper = soup(source, "lxml")
 # print(page_souper.prettify())
 
 
-item = page_souper.find("span",{'class':"gb-font-size-medium inlineBlock unitLineHeight dealPriceText"})
+items = page_souper.findAll("div",{'class':"v2-listing-card__info"})
 # author = item.find("a",{'class':"entry-author-link"})
-print(item)
-#
+print(items[0].prettify())
+
+
+# for item in items:
+#     print(item.h3.text)
 # title = article.a.text
 # print(title)
 # titles = page_souper.findAll("a", {"class": "entry-title-link"})
@@ -33,3 +36,4 @@ print(item)
 #
 # link = article.find("iframe", class_='youtube-player')['src']
 # print(link)
+
